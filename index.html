@@ -48,7 +48,7 @@
     }
     #submit{
       font-size: 10vmin;
-      color: #333;
+      color: black;
       background: #fcba03;
       margin: 2vmin;
       padding: 1vmin;
@@ -70,7 +70,10 @@
     }
   </style>
   <script>
-    var IP = "", submitPW;
+    if(location.href.includes("https://"))
+      location.href = location.href.toString().replace("https://", "http://");
+
+    var IP = "", PW = "", submitPW;
     function submitIP(){
       IP = document.getElementById("ip").value;
       var x = new XMLHttpRequest();
