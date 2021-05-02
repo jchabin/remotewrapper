@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<title>Remote</title>
+		
+		<style>
+    		  *{
+    		    box-sizing: border-box;
+    		    overflow: hidden;
+    		    margin: 0;
+    		  }
+    		  body{
+    		    width: 100vw;
+    		    height: 100vh;
+		    background: #111;
+    		  }
+    		  #ip{
+    		    outline: none;
+		    border: none;
+    		    border-bottom: 1vmin solid #EEE;
+    		    font-size: 10vmin;
+    		    background: #333;
+		    color: #EEE;
+    		    margin: 2vmin;
+    		    margin-top: 22vmin;
+    		    display: block;
+    		    padding: 1vmin;
+    		    font-family: Arial;
+    		    width: 80vmin;
+    		  }
+    		  #submit{
+    		    font-size: 10vmin;
+    		    color: #333;
+    		    background: #fcba03;
+    		    margin: 2vmin;
+    		    padding: 1vmin;
+    		    font-family: Arial;
+    		    text-align: center;
+    		    cursor: pointer;
+    		    width: 80vmin;
+    		  }
+    		</style>
+	</head>
+	
+	<body>
+		<center>
+   		   <input id="ip" placeholder="Password">
+   		   <div id="submit" onclick="submit()">Submit</div>
+   		 </center>
+   		 <script>
+   		   function submit(){
+   		     location.href = "http://" + document.getElementById("ip").value;
+   		   }
+    		</script>
+	</body>
+</html>
