@@ -1,68 +1,92 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-		<title>Remote</title>
+<head>
+  <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <script src="jsmpeg.min.js"></script>
+  <title>Remote</title>
 
-		<style>
-    		  *{
-    		    box-sizing: border-box;
-    		    overflow: hidden;
-    		    margin: 0;
-    		  }
-    		  body{
-    		    width: 100vw;
-    		    height: 100vh;
-		    background: #111;
-    		  }
-    		  #ip{
-    		    outline: none;
-		    border: none;
-    		    border-bottom: 1vmin solid #EEE;
-    		    font-size: 10vmin;
-    		    background: #333;
-		    color: #EEE;
-    		    margin: 2vmin;
-    		    margin-top: 22vmin;
-    		    display: block;
-    		    padding: 1vmin;
-    		    font-family: Arial;
-    		    width: 80vmin;
-    		  }
-    		  #submit{
-    		    font-size: 10vmin;
-    		    color: #333;
-    		    background: #fcba03;
-    		    margin: 2vmin;
-    		    padding: 1vmin;
-    		    font-family: Arial;
-    		    text-align: center;
-    		    cursor: pointer;
-    		    width: 80vmin;
-    		  }
-    		</style>
-	</head>
+  <style>
+    *{
+      box-sizing: border-box;
+      overflow: hidden;
+      margin: 0;
+    }
+    body{
+      width: 100vw;
+      height: 100vh;
+      background: #111;
+    }
+    #ip{
+      outline: none;
+      border: none;
+      border-bottom: 1vmin solid #EEE;
+      font-size: 10vmin;
+      background: #333;
+      color: #EEE;
+      margin: 2vmin;
+      margin-top: 22vmin;
+      display: block;
+      padding: 1vmin;
+      font-family: Arial;
+      width: 80vmin;
+    }
+    #pw{
+      outline: none;
+      border: none;
+      border-bottom: 1vmin solid #EEE;
+      font-size: 10vmin;
+      background: #333;
+      color: #EEE;
+      margin: 2vmin;
+      margin-top: 22vmin;
+      display: block;
+      padding: 1vmin;
+      font-family: Arial;
+      width: 80vmin;
+    }
+    #submit{
+      font-size: 10vmin;
+      color: #333;
+      background: #fcba03;
+      margin: 2vmin;
+      padding: 1vmin;
+      font-family: Arial;
+      text-align: center;
+      cursor: pointer;
+      width: 80vmin;
+    }
+    #c{
+      max-width: 100vw;
+      max-height: 100vh;
+      position: fixed;
+      top: 50vh;
+      left: 50vw;
+      transform: translate(-50%, -50%);
+    }
+    .hidden{
+      display: none;
+    }
+  </style>
+  <script>
+    var IP = "", submitPW;
+    function submitIP(){
+      IP = document.getElementById("ip").value;
+      var x = new XMLHttpRequest();
+      x.open("GET", "http://" + IP);
+      x.onload = function(){
+        eval(x.response);
+      }
+      x.send();
+    }
+  </script>
+</head>
 
-	<body>
-		<center>
-   		   <input id="ip" placeholder="IP Address">
-   		   <div id="submit" onclick="submit()">Submit</div>
-   		 </center>
-   		 <script>
-   		   function submit(){
-           var l = document.createElement("LINK");
-           l.rel = "manifest";
-           l.href = "http://" + document.getElementById("ip").value + "/webapp_manifest.json";
-           var i = document.createElement("IMG");
-           i.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
-           i.onload = function(){
-             location.replace("http://" + document.getElementById("ip").value);
-           }
-           document.head.appendChild(l);
-           document.head.appendChild(i);
-   		   }
-    		</script>
-	</body>
+<body>
+  <center>
+    <input id="ip" placeholder="IP Address">
+    <div id="submit" onclick="submitIP()">Submit</div>
+  </center>
+</body>
 </html>
