@@ -5,7 +5,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<title>Remote</title>
-		
+
 		<style>
     		  *{
     		    box-sizing: border-box;
@@ -44,7 +44,7 @@
     		  }
     		</style>
 	</head>
-	
+
 	<body>
 		<center>
    		   <input id="ip" placeholder="IP Address">
@@ -52,7 +52,16 @@
    		 </center>
    		 <script>
    		   function submit(){
-   		     location.replace("http://" + document.getElementById("ip").value);
+           var l = document.createElement("LINK");
+           l.rel = "manifest";
+           l.href = "http://" + document.getElementById("ip").value + "/webapp_manifest.json";
+           var i = document.createElement("IMG");
+           i.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+           i.onload = function(){
+             location.replace("http://" + document.getElementById("ip").value);
+           }
+           document.head.appendChild(l);
+           document.head.appendChild(i);
    		   }
     		</script>
 	</body>
